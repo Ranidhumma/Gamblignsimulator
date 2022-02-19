@@ -3,11 +3,55 @@ package com.java;
 import java.util.Scanner;
 
 public class Gambler {
-
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub	
-	System.out.println("Welcome to gamblerNew");	
+	    public static final int BET = 1;
+		public static final int Stake_Day = 100 ;
+		public static final int WIN = 1;
+	    public static int stake = 0; //initial gambler bets with 1
+	    public static Scanner scanner = new Scanner(System.in);
+		
+	    public static void Gambler(){	
+			System.out.println("Enter a stake value");
+			int stake = scanner.nextInt();
+			System.out.println("Enter a bet Value");
+			int bet = scanner.nextInt();
+		}
+		
+		public static void wincheck() {
+			//Random random = new Random();
+			//int bet = random.nextInt(2);
+		    double bet= Math.floor(Math.random() * 10)% 2;
+			if (bet == WIN) 
+			{
+				stake++ ; 
+			}
+			else {
+				stake--; 
+				}
+		}
+		
+		 public static void monthlyWinOrLossCheck() {
+				int day;
+				for (day = 1; day <= 20; day++) {
+				    System.out.printf("day %d\n", day);
+				    CheckResignDay(); 
+			}
+	 }
+		public static void CheckResignDay(){
+				int totalstake = 0;
+				stake = 0;
+				while (stake != 50 && stake != -50)
+				{
+					wincheck();
+				}
+			  totalstake = stake + Stake_Day ;
+			   System.out.println("total Stake for resign for a day is " + totalstake);  //total stake for a day 
+			
+ scanner.close();
 	}
 
-}
+		public static void main(String[] args) {
+		System.out.println("Welcome");
+     	monthlyWinOrLossCheck();
+		}
+		
+	}
